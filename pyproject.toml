@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68]
+build-backend="setuptools.backends._legacy:_Backend"
+
+[project]
+name = "ytdownloaderpip"
+version = "1.0.0"
+description = "Simple YouTube downloader — paste a link, choose quality, download."
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+dependencies = [
+    "yt-dlp",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/ytdownloaderpip"
+
+[project.scripts]
+ytdl = "ytdownloaderpip.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
