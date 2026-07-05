@@ -1,36 +1,37 @@
+```markdown
 # YouTube Video Downloader
 
-A simple YouTube downloader — paste a link, choose quality, and download. No manual FFmpeg installation needed.
+Paste a link, choose quality, download. No manual FFmpeg setup needed.
 
-## Features
+## Install
 
-- 1080p, 720p, 480p video, or MP3 audio
-- Auto-downloads FFmpeg on first run (no manual setup)
-- Auto-installs yt-dlp if missing
-- Live progress bars with speed and ETA
-
-main.py	- Entry point
-
-downloader.py -	Download logic
-
-ffmpeg_setup.py	- Auto-downloads FFmpeg
-
-progress_bar.py	- Progress bars
-
-**Requirements**
-Python 3.7+
-Internet connection (first run downloads ~100 MB FFmpeg binaries)
+```bash
+pip install ytdownloaderpip
+```
 
 ## Usage
 
 ```bash
-pip install yt_dlp
-python main.py
+ytdl
+```
 
-or just
+Or as a Python module:
 
-python main.py
+```bash
+python -m ytdownloaderpip
+```
 
 Then paste a YouTube link and choose your format.
 
+## Features
 
+- 1080p, 720p, 480p video, or MP3 audio
+- Auto-downloads FFmpeg on first run (~100 MB, cached in app data dir)
+- Live progress bars with speed and ETA
+- No manual dependencies — pip handles everything
+
+## Requirements
+
+- Python 3.7+
+- Internet connection (first run downloads FFmpeg binaries)
+```
