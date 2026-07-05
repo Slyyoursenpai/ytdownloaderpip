@@ -7,6 +7,17 @@ import tarfile
 import platform as _platform
 from ytdownloaderpip.progress_bar import ffmpeg_progress_hook
 # ── FFmpeg auto-setup ──────────────────────────────────────────────────
+###### platform appropriate storage
+def _get_cache_dir():
+    if sys.platform.startswith("win"):
+        base = os.environ.get("LOCALAPPDATA", os.path.expanduser("~"))
+        return os.path.join(base, "ytdownloader")
+    elif sys.platform.startswith("darwin"):
+        return os.path.join(os.path.expanduser("~"), "Library", "Application Support", "ytdownloader")
+    else:
+        xdg = os.environ.get("XDG_DATA_HOME", os.path.join(os.path.expanduser("~"), ".local", "share"))
+        return os.path.join(xdg, "ytdownloader")
+        
 
 def _get_ffmpeg_info():
     system = sys.platform.lower()
@@ -37,8 +48,7 @@ def _get_ffmpeg_info():
             "inner_folder": f"ffmpeg-master-latest-darwin-{suffix}-gpl",
         }
     return None
-###############################
-###############################
+
 def setup_ffmpeg():
     """Locate or download FFmpeg. Returns the ffmpeg binary path, or None."""
 
@@ -49,12 +59,13 @@ def setup_ffmpeg():
         return which
 
     # 2. Already in local ffmpeg_bin/
-    local_dir = "ffmpeg_bin"
+    local_dir = os.path.join(_get_cache_dir(), "ffmpeg_bin")
+    os.makedirs(local_dir, exist_ok=True)
     bin_name = "ffmpeg.exe" if sys.platform.startswith("win") else "ffmpeg"
     local_path = os.path.join(local_dir, bin_name)
     if os.path.isfile(local_path):
-        print(f"[✓] FFmpeg found: {os.path.abspath(local_path)}")
-        return os.path.abspath(local_path)
+        print(f"[✓] FFmpeg found: {local_path}")
+        return local_path
 
     # 3. Unsupported platform
     info = _get_ffmpeg_info()
@@ -101,6 +112,5 @@ def setup_ffmpeg():
     shutil.rmtree(tmp, ignore_errors=True)
     os.remove(archive_path)
 
-    final = os.path.abspath(os.path.join(local_dir, info["binary_name"]))
-    print(f"[✓] FFmpeg ready: {final}")
-    return final
+    print(f"[✓] FFmpeg ready: {local_path}")
+    return local_path

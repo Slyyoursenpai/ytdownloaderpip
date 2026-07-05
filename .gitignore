@@ -18,3 +18,7 @@ ffmpeg_bin/
 *.f*
 
 __pycache__/
+
+# Build artifacts
+dist/
+*.egg-info/
