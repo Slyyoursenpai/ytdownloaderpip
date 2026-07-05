@@ -1,3 +1,4 @@
+import os
 import yt_dlp
 from ytdownloaderpip.ffmpeg_setup import setup_ffmpeg
 from ytdownloaderpip.progress_bar import video_progress_hook
@@ -20,7 +21,7 @@ class YTRunner:
             return False
 
         ydl_opts = {
-            "outtmpl": "%(title)s.%(ext)s",
+            "outtmpl": os.path.expanduser("~/Downloads/%(title)s.%(ext)s"),
             "format": selected_format,
             "progress_hooks": [video_progress_hook],
             "extractor_args": {"youtube": {"skip": ["dash", "hls"]}},
