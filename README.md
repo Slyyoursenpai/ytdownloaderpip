@@ -15,7 +15,7 @@ pip install ytdownloaderpip
 ytdl
 ```
 
-Or as a Python module:
+Or as a Python module if ytdl isn't recognized (common on windows due to path variable mismatch):
 
 ```bash
 python -m ytdownloaderpip
