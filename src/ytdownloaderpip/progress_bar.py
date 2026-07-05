@@ -1,3 +1,4 @@
+import sys
 
 ### progress bar for ffmpeg
 def ffmpeg_progress_hook(block_num, block_size, total_size):
@@ -6,9 +7,10 @@ def ffmpeg_progress_hook(block_num, block_size, total_size):
         percent = min(int(downloaded * 100 / total_size), 100)
         filled = percent // 2
         bar = "█" * filled + "░" * (50 - filled)
-        print(f"\rDownloading: |{bar}| {percent}%", end="", flush=True)
+        sys.stdout.write(f"\rDownloading: |{bar}| {percent}%   ")
     else:
-        print(f"\rDownloaded: {block_num * block_size / 1024:.0f} KB", end="", flush=True)
+        sys.stdout.write(f"\rDownloaded: {block_num * block_size / 1024:.0f} KB   ")
+    sys.stdout.flush()
 
 ### progress bar for video download
 def video_progress_hook(d):
