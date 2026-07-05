@@ -1,4 +1,3 @@
-```markdown
 # YouTube Video Downloader
 
 Paste a link, choose quality, download. No manual FFmpeg setup needed.
@@ -34,4 +33,3 @@ Then paste a YouTube link and choose your format.
 
 - Python 3.7+
 - Internet connection (first run downloads FFmpeg binaries)
-```
