@@ -1,8 +1,18 @@
+import argparse
 import sys
+from ytdownloaderpip import __version__
 from ytdownloaderpip.downloader import YTRunner
 
     
 def main():
+    parser = argparse.ArgumentParser(description="YouTube Video Downloader")
+    parser.add_argument("-v", "--version", action="store_true", help="show version and exit")
+    args = parser.parse_args()
+
+    if args.version:
+        print(f"ytdownloaderpip v{__version__}")
+        return
+
     print("===== Youtube Downloader====")
     
     url = input("Paste your Youtube Link here: ").strip()

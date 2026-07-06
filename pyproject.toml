@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/ytdownloaderpip"
+Homepage = "https://github.com/Slyyoursenpai/ytdownloaderpip"
 
 [project.scripts]
 ytdl = "ytdownloaderpip.main:main"
