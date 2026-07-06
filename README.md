@@ -1,6 +1,6 @@
-# YouTube Video Downloader
+# YouTube Video Audio Downloader
 
-Paste a link, choose quality, download. No manual FFmpeg setup needed.
+Paste a link, choose quality/audio, download. No manual FFmpeg setup needed.
 
 ## Install
 
